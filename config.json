@@ -1,0 +1,50 @@
+{
+    "root_path": "/export/project/zhixin.sun/MathImgSci",
+    "code_path": "/export/project/zhixin.sun/MathImgSci/code",
+
+    "setting": {
+        "gpu_index": "0"
+    },
+
+    "dataset": {
+        "data_path": "/export/project/zhixin.sun/MathImgSci/data",
+        "num_parallel_calls": -1,
+        "noiseLevel": "High_Noise",
+        "data_augmentation_mode": 1
+    },
+
+    "cnn_model": {
+        "network": "DnCNN",
+        "depth": 10,
+        "n_channels": 64,
+        "image_channels" : 1,
+        "kernel_size": 3
+    },
+
+    "train": {
+        "init_lr": 1e-3,
+        "batch_size": 120,
+        "end2end_lr": 1e-4,
+        "end2end_milestone": 30,
+        "end2end_epoch": 150,
+        "save_epoch": 50,
+	    "weight_decay": 1e-8
+    },
+
+    "keep_training":{
+        "load_path" : "",
+        "is_training":0
+    },
+
+    "valid": {
+        "batch_size": 120
+    },
+
+    "test": {
+	    "num_test": 1,
+	    "batch_size": 120,
+	    "model_path": "06-Dec-2022-09-16-19DnCNN_depth_10_sigma_High_Noise",
+	    "model_file": "dncnn_scalar_image_final.pth"
+    }
+
+}
