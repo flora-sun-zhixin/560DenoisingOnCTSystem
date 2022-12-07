@@ -17,10 +17,15 @@ sampleLocation = generateLocation(64)
 radonOp = RadonOperator(imageShape=32, refine=refine)
 
 dataFolder = "/export/project/zhixin.sun/MathImgSci/data"
+# dataFolder = "/Users/flora/Docs/MathImgSci/data"
 if os.path.exists(dataFolder):
     shutil.rmtree(dataFolder)
+
 os.mkdir(dataFolder)
 imgFolder = "/export/project/zhixin.sun/MathImgSci/images"
+# imgFolder = "/Users/flora/Docs/MathImgSci/images"
+if not os.path.exists(imgFolder):
+    os.mkdir(imgFolder)
 
 noiseLevels = {"Low_Noise": 50000,
               "Medium_Noise": 25000,
@@ -46,6 +51,7 @@ for i in tqdm(range(500)):
     noiseFree_Abs_obj = descretImage(a.getSignalAbsentObject(sampleLocation), 32)
     noiseFree_Pre_sino = radonOp.radon(noiseFree_Pre_obj)
     noiseFree_Abs_sino = radonOp.radon(noiseFree_Abs_obj)
+
     for nslvl in noiseLevels.keys():
         imgAbs = radonOp.iradon(addGammaToSino(noiseFree_Abs_sino, noiseLevels[nslvl]))
         SignalAbsent[nslvl].append(imgAbs)

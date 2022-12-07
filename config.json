@@ -9,7 +9,7 @@
     "dataset": {
         "data_path": "/export/project/zhixin.sun/MathImgSci/data",
         "num_parallel_calls": -1,
-        "noiseLevel": "High_Noise",
+        "noiseLevel": "Very_High_Noise",
         "data_augmentation_mode": 1
     },
 
@@ -43,7 +43,7 @@
     "test": {
 	    "num_test": 1,
 	    "batch_size": 120,
-	    "model_path": "06-Dec-2022-09-16-19DnCNN_depth_10_sigma_High_Noise",
+	    "model_path": "06-Dec-2022-17-08-46DnCNN_depth_10_sigma_Very_High_Noise",
 	    "model_file": "dncnn_scalar_image_final.pth"
     }
 

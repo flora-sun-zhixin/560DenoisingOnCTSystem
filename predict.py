@@ -133,8 +133,8 @@ if not os.path.exists(result_path):
     os.mkdir(result_path)
 
 labelData = np.concatenate([np.zeros((predData.shape[0] // 2,)), np.ones((predData.shape[0] // 2,))], axis=0)
-for i in list(range(50)):# + list(range(100, 150)):
-    fig, axes = plt.subplots(1, 3)
+for i in [70, 170]:# + list(range(100, 150)):
+    fig, axes = plt.subplots(1, 3, figsize=(30, 12))
     plt.tight_layout()
     axes[0].imshow(testDict["gdt"][i, ...])
     axes[0].set_title("Ground Truth", fontsize=40)
@@ -145,7 +145,7 @@ for i in list(range(50)):# + list(range(100, 150)):
     axes[2].imshow(predData[i, ...])
     axes[2].set_title("Denoised Result", fontsize=40)
     axes[2].axis("off")
-    # fig.savefig(os.path.join(result_path, f'result-{config["dataset"]["noiseLevel"]}'), bbox_inches="tight")
+    fig.savefig(os.path.join(result_path, f'result-{i}-{config["dataset"]["noiseLevel"]}'), bbox_inches="tight")
 
 plt.show()
 print(predData.shape)

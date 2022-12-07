@@ -8,14 +8,15 @@ from torch.utils.data import Dataset
 ###############################################
 class CustomizeDataset(Dataset):
 
-    def __init__(self, data: dict, shuffle=True):
+    def __init__(self, data: dict, shuffle=True, processGDT=True):
         self.data = {}
         gdt, noisy = data["gdt"], data["noisy"]
 
-        noisy, nmean, nstd = CustomizeDataset.standardize(noisy)
+        # noisy, nmean, nstd = CustomizeDataset.standardize(noisy)
         noisy, nmin, nmax = CustomizeDataset.normalize(noisy)
-        gdt, _, _ = CustomizeDataset.standardize(gdt, nmean, nstd)
-        gdt, _, _ = CustomizeDataset.normalize(gdt, nmin, nmax)
+        if processGDT:
+            # gdt, _, _ = CustomizeDataset.standardize(gdt, nmean, nstd)
+            gdt, _, _ = CustomizeDataset.normalize(gdt)
 
     # shuffle to mix signal present and signal absent
         if shuffle:

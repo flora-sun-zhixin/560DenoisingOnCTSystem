@@ -57,7 +57,7 @@ SignalAbsentData = read_hdf5_file(os.path.join(config["dataset"]["data_path"],
                                                f"SignalAbsent_{config['dataset']['noiseLevel']}.hdf5"))
 trainIndex = np.random.choice(500, 300, replace=False)
 restIndex = np.setdiff1d(np.arange(500, dtype=trainIndex.dtype), trainIndex)
-validIndex = np.random.choice(restIndex, 100)
+validIndex = np.random.choice(restIndex, 100, replace=False)
 testIndex = np.setdiff1d(restIndex, validIndex)
 
 trainDict = {"gdt": np.concatenate([SignalAbsentData["gdt"][trainIndex, ...],
